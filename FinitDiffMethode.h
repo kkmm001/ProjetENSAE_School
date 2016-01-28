@@ -1,4 +1,8 @@
 #pragma once
+#ifndef FINITDIFFMETHODE_H
+#define FINITDIFFMETHODE_H
+
+
 #include "BS_PDE.h"
 #include <fstream>
 
@@ -31,16 +35,14 @@ private:
 	double Smax;			//require to be init
 	unsigned long N_spot;		//number of step
 	double dS;
-	//Spot recurrence index
-	//unsigned long spotCurrent, spotLast, spotNext;		// index
-
 
 	//time discretisation
 	double Tmax;			//maturity
 	unsigned long N_time;		//number of step
 	double dt;
+
 	//time recurrence index
-	unsigned long Tlast, Tcurrent;		//index
+	//unsigned long Tlast, Tcurrent;		//index
 
 
 	//Explicit methode coeffs for time recurrence F(t,s)=a(s)F(t+1,s-1)+ b(s)F(t+1,s) +c(s)F(t+1,s+1)
@@ -69,3 +71,5 @@ public:
 
 
 
+
+#endif

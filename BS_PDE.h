@@ -1,4 +1,7 @@
 #pragma once
+#ifndef PDE_H
+#define PDE_H
+
 #include "Option.h"
 
 
@@ -20,3 +23,4 @@ public:
 	VanillaOption* getVanillaOption(void);
 };
 
+#endif

@@ -41,7 +41,7 @@ void ExplicitGrid::boudary_condition(void)		//recall this function for every rec
 		//S=0 for below boundary so that neoud value is always null.
 		result.at(i).at(0) = 0.0;						
 		//S=Smax the call will be always exerced, which can be actualized from last result.
-		result.at(i).at(N_spot - 1) = Smax - pde->getVanillaOption()->getStrike()*discount_factor(i, N_time - i);
+		//result.at(i).at(N_spot - 1) = Smax - pde->getVanillaOption()->getStrike()*discount_factor(i, N_time - i);
 	}
 }
 
@@ -69,7 +69,7 @@ unsigned long ExplicitGrid::calculation_nexttime(unsigned long Tlast)
 		c = (dt / (1 + r*dt))*(pde->coeff_DerivSpotSecond(Tlast*dt, j) + 0.5*pde->coeff_DerivSpotFirst(Tlast*dt, j));
 		Rcurrent[j] = Rlast[j - 1] * a + Rlast[j] * b + Rlast[j + 1] * c;
 	}
-	//Rcurrent[N_spot-1] = 2 * Rcurrent[N_spot - 2] - Rcurrent[N_spot - 3];
+	Rcurrent[N_spot-1] = 2 * Rcurrent[N_spot - 2] - Rcurrent[N_spot - 3];
 	result.at(Tlast - 1) = Rcurrent;
 	return (Tlast - 1);
 }

@@ -1,4 +1,6 @@
 #pragma once
+#ifndef CLOSEFORM_H
+#define	CLOSEFORM_H
 
 #include "Option.h"
 #include <vector>
@@ -16,4 +18,4 @@ public:
 	double density_std_gaussian(double x);
 	double repartition_std_gaussian(double x);
 };
-
+#endif

@@ -34,9 +34,9 @@ double BS_CloseForm::density_std_gaussian(double x)
 
 double BS_CloseForm::repartition_std_gaussian(double param)
 {
-	long index,  N = 10001;
+	long index,  N = 100001;
 	std::vector<double> result;
-	double x = 0, x_max = 5.0, x_min = -5.0, density = 0.0, sum_probability = 0.0;
+	double x = 0, x_max = 10.0, x_min = -10.0, density = 0.0, sum_probability = 0.0;
 	double dx = (x_max - x_min) / double(N-1);
 
 	for (long i = 0; i < N;i++)
@@ -47,16 +47,16 @@ double BS_CloseForm::repartition_std_gaussian(double param)
 		result.push_back(sum_probability);
 	}
 
-	if (param >= 5)
+	if (param >= 10)
 	{
 		return result.at(N-1);
 	}
-	else if (param <= -5){
+	else if (param <= -10){
 		return result.at(0);
 	}
 	else
 	{
-		index = (long)((param + 5) / dx);
+		index = (long)((param + 10) / dx);
 		return result.at(index);
 	}
 }
